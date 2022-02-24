@@ -1,0 +1,51 @@
+.App {
+  padding: 1em;
+}
+
+.App-logo {
+  height: 30px;
+  pointer-events: none;
+}
+.userList {
+  text-align: left;
+  margin-top: 30px;
+}
+.userList li:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 1s linear;
+  }
+}
+
+.App-header {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #282c34;
+  height: 1.5em;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
