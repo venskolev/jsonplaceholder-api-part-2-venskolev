@@ -49,3 +49,15 @@
     transform: rotate(360deg);
   }
 }
+.UserInfo {
+  text-align: center;
+  margin-top: 50px;
+}
+.ButtonHome {
+  margin-left: 300px;
+  padding: 5px;
+}
+.ButtonHome>a {
+  font-weight: bold;
+  color: red;
+}

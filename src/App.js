@@ -2,16 +2,15 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import logo from "./logo.svg";
-import { UserInfo } from "./components/UserInfo";
-import { SmartUserInfo } from "./components/SmartUserInfo";
+import { useParams, Link } from "react-router-dom";
 
 axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";
 
 function App() {
   const [users, setUsers] = useState([]);
-
+  let params = useParams();
   // State-Variable für den ausgewählten User (per Click)
-  const [selectedUser, setSelectedUser] = useState(null);
+  // const [selectedUser, setSelectedUser] = useState(null);
   // State Variable für den Ladezustand
   const [loading, setLoading] = useState(false);
 
@@ -42,7 +41,7 @@ function App() {
   useEffect(() => {
     loadData();
   }, []);
-
+  const userLoad = users.find((user) => user.name === params.usersname);
   return (
     <div className="App">
       <header className="App-header">
@@ -56,15 +55,20 @@ function App() {
       <ul className="userList">
         {users.map((user, index) => {
           return (
-            <li key={`users-${index}`} onClick={() => setSelectedUser(user.id)}>
-              {user.name}, {user.phone}, {user.email}, {user.address.geo.lat} /{" "}
-              {user.address.geo.lng}
-            </li>
+            <Link to={'./userinfo/' + user.id}>
+              <li key={`users-${index}`}
+              >
+                {user.name}, {user.phone}
+              </li></Link>
           );
         })}
+        {params.username ? (
+          <div>
+          <strong>User Info </strong> {userLoad.name}
+          </div>
+        ): undefined}
       </ul>
 
-      <SmartUserInfo userId={selectedUser} />
     </div>
   );
 }
